@@ -6,6 +6,7 @@ import { useFavoritos } from "../contexts/useFavoritos";
 interface Props {
   personagem: Character;
   onSelect: (id: string) => void;
+  className?: string;
 }
 
 export const CardPersonagem: React.FC<Props> = ({ personagem, onSelect }) => {

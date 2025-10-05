@@ -16,33 +16,33 @@ export default function HPCharacterDetail() {
       setLoading(true);
       getCharacterById(id)
         .then(setCharacter)
-        .catch(() => setError("Failed to load character."))
+        .catch(() => setError("Falha ao carregar o personagem."))
         .finally(() => setLoading(false));
     }
   }, [id]);
 
   if (loading) {
     return (
-      <div className="h-screen w-full flex flex-col justify-center items-center bg-black text-white font-serif">
+      <div className="h-screen w-full flex flex-col justify-center items-center bg-black text-white">
         <img
           src="/img/logo-harry-potter.png"
-          alt="Loading..."
+          alt="Carregando personagem..."
           className="w-24 h-24 mb-4 animate-spin"
         />
-        <p className="text-lg">Loading character...</p>
+        <p className="text-lg">Carregando personagem...</p>
       </div>
     );
   }
 
   if (error || !character) {
     return (
-      <div className="h-screen w-full flex flex-col justify-center items-center bg-black text-red-500 font-serif">
-        <p className="text-lg">{error || "Character not found."}</p>
+      <div className="h-screen w-full flex flex-col justify-center items-center bg-black text-red-500">
+        <p className="text-lg">{error || "Personagem não encontrado..."}</p>
         <button
           onClick={() => navigate(-1)}
           className="px-4 py-2 !bg-yellow-500 text-black rounded-lg shadow hover:!bg-yellow-400 transition-colors"
         >
-          Back
+          Voltar
         </button>
       </div>
     );
@@ -68,7 +68,7 @@ export default function HPCharacterDetail() {
             onClick={() => navigate(-1)}
             className="px-4 py-2 !bg-yellow-500 !border-bg-yellow-500 hover:!border-white text-black font-semibold rounded-lg shadow hover:!bg-white transition-colors"
           >
-            Back
+            Voltar
           </button>
         </div>
       </div>

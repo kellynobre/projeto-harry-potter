@@ -1,10 +1,8 @@
 // src/pages/Home.tsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { Character } from "../types/character";
 
 const Home: React.FC = () => {
-  const [character, setCharacter] = useState<Character | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -17,10 +15,8 @@ const Home: React.FC = () => {
           throw new Error("Erro ao buscar personagens. Tente novamente mais tarde.");
         }
 
-        const data: Character[] = await res.json();
-        const random = data[Math.floor(Math.random() * data.length)];
-        setCharacter(random);
-      } catch (err) {
+        await res.json();
+      } catch {
         setError("Não foi possível carregar os personagens. Tente novamente mais tarde");
       } finally {
         setLoading(false);
@@ -66,7 +62,6 @@ const Home: React.FC = () => {
   return (
     <div className="relative w-full h-full bg-black py-[120px]">
       <div className="container flex flex-col lg:flex-row lg:justify-between gap-[50px] items-center overflow-hidden">
-     
         <div className="z-10 flex flex-col gap-[2rem] justify-center items-center">
           <div className="flex flex-col gap-[10px] items-center text-center">
             <h1 className="text-[50px] md:text-[30px] text-white">Harry Potter</h1>
@@ -76,26 +71,22 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-       
-          
-<div className="flex gap-[20px] justify-center md:justify-start flex-wrap w-full max-w-[400px]">
-  <button
-    onClick={() => navigate("/characters")}
-    className="flex-1 bg-white text-black py-3 rounded-lg shadow-lg hover:!bg-yellow-400 hover:scale-110 hover:shadow-2xl transition-transform duration-200"
-  >
-    Personagens
-  </button>
-  <button
-    onClick={() => navigate("/spells")}
-    className="flex-1 bg-white text-black py-3 rounded-lg shadow-lg hover:!bg-yellow-400 hover:scale-110 hover:shadow-2xl transition-transform duration-200"
-  >
-    Feitiços
-  </button>
-</div>
-
+          <div className="flex gap-[20px] justify-center md:justify-start flex-wrap w-full max-w-[400px]">
+            <button
+              onClick={() => navigate("/characters")}
+              className="flex-1 bg-white text-black py-3 rounded-lg shadow-lg hover:!bg-yellow-400 hover:scale-110 hover:shadow-2xl transition-transform duration-200"
+            >
+              Personagens
+            </button>
+            <button
+              onClick={() => navigate("/spells")}
+              className="flex-1 bg-white text-black py-3 rounded-lg shadow-lg hover:!bg-yellow-400 hover:scale-110 hover:shadow-2xl transition-transform duration-200"
+            >
+              Feitiços
+            </button>
+          </div>
         </div>
 
-       
         <div className="md:w-1/2 flex justify-center items-center mt-8 md:mt-0">
           <img
             src="/harry-potter.gif"

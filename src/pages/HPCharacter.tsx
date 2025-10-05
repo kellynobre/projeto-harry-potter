@@ -1,5 +1,5 @@
 // src/pages/HPCharacter.tsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getCharacters } from "../services/character";
 import type { Character } from "../types/character";
 import { CardPersonagem } from "../components/CardPersonagem";

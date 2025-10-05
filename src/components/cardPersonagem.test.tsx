@@ -1,11 +1,8 @@
-<reference types="vitest" />
-
 import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, type Mock } from "vitest";
 import { CardPersonagem } from "./CardPersonagem";
-import * as FavoritosHook from "../contexts/useFavoritos"; // importar como módulo
+import * as FavoritosHook from "../contexts/useFavoritos";
 
-// Cria o mock do hook
 vi.spyOn(FavoritosHook, "useFavoritos");
 
 describe("<CardPersonagem />", () => {
@@ -18,7 +15,7 @@ describe("<CardPersonagem />", () => {
   };
 
   it("renderiza nome, casa e espécie do personagem", () => {
-    (FavoritosHook.useFavoritos as vi.Mock).mockReturnValue({
+    (FavoritosHook.useFavoritos as Mock).mockReturnValue({
       favoritos: [],
       toggleFavorito: vi.fn(),
     });
@@ -32,18 +29,18 @@ describe("<CardPersonagem />", () => {
   it("chama onSelect ao clicar no card", () => {
     const mockSelect = vi.fn();
 
-    (FavoritosHook.useFavoritos as vi.Mock).mockReturnValue({
+    (FavoritosHook.useFavoritos as Mock).mockReturnValue({
       favoritos: [],
       toggleFavorito: vi.fn(),
     });
 
     render(<CardPersonagem personagem={personagemFake} onSelect={mockSelect} />);
-    fireEvent.click(screen.getByRole("img")); 
+    fireEvent.click(screen.getByRole("img"));
     expect(mockSelect).toHaveBeenCalledWith("1");
   });
 
   it("mostra 'Remover' quando o personagem está nos favoritos", () => {
-    (FavoritosHook.useFavoritos as vi.Mock).mockReturnValue({
+    (FavoritosHook.useFavoritos as Mock).mockReturnValue({
       favoritos: [{ id: "1" }],
       toggleFavorito: vi.fn(),
     });
@@ -55,7 +52,7 @@ describe("<CardPersonagem />", () => {
   it("executa toggleFavorito ao clicar no botão", () => {
     const mockToggle = vi.fn();
 
-    (FavoritosHook.useFavoritos as vi.Mock).mockReturnValue({
+    (FavoritosHook.useFavoritos as Mock).mockReturnValue({
       favoritos: [],
       toggleFavorito: mockToggle,
     });
