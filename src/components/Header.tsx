@@ -21,7 +21,7 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Mobile Hamburger */}
-      {/* Mobile Hamburger */}
+    
 <button
   className="md:hidden flex flex-col justify-center items-center w-10 h-10 !bg-yellow-400 rounded-lg border border-yellow-500 p-2"
   onClick={() => setMenuOpen(!menuOpen)}

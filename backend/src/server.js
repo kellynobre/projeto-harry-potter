@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rotas
+
 app.use("/characters", characterRoutes);
 
 const PORT = process.env.PORT || 4000;

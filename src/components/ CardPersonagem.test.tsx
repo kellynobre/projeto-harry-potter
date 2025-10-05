@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from "vitest";
 import { CardPersonagem } from "./CardPersonagem";
 import { useFavoritos } from "../contexts/useFavoritos";
 
-// 🔹 Simula o hook useFavoritos para controlar comportamento
+
 vi.mock("../contexts/useFavoritos");
 
 describe("<CardPersonagem />", () => {
@@ -16,7 +16,7 @@ describe("<CardPersonagem />", () => {
   };
 
   it("renderiza nome, casa e espécie do personagem", () => {
-    // Mock do hook
+    
     (useFavoritos as any).mockReturnValue({
       favoritos: [],
       toggleFavorito: vi.fn(),
@@ -39,7 +39,7 @@ describe("<CardPersonagem />", () => {
 
     render(<CardPersonagem personagem={personagemFake as any} onSelect={mockSelect} />);
 
-    fireEvent.click(screen.getByRole("img")); // clique no card
+    fireEvent.click(screen.getByRole("img")); 
     expect(mockSelect).toHaveBeenCalledWith("1");
   });
 

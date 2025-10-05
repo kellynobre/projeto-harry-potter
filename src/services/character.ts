@@ -1,15 +1,21 @@
-// src/services/character.ts
 import { API_BASE } from "./apiBase";
 import type { Character } from "../types/character";
 
-export const getCharacters = async (): Promise<Character[]> => {
-  const res = await fetch(`${API_BASE}/characters`);
+interface PaginatedResponse {
+  page: number;
+  limit: number;
+  total: number;
+  results: Omit<Character, "id">[];
+}
+
+export const getCharacters = async (page = 1, limit = 12): Promise<Character[]> => {
+  const res = await fetch(`${API_BASE}/characters?page=${page}&limit=${limit}`);
   if (!res.ok) throw new Error("Erro ao buscar personagens");
 
-  const data: Omit<Character, "id">[] = await res.json();
+  const data: PaginatedResponse = await res.json();
 
-  return data.map((char, index) => ({
-    id: `${char.name.toLowerCase().replace(/\s+/g, "_")}_${index}`, // id gerado
+  return data.results.map((char, index) => ({
+    id: `${char.name.toLowerCase().replace(/\s+/g, "_")}_${index + (page - 1) * limit}`, // id único por página
     name: char.name,
     species: char.species,
     house: char.house,
