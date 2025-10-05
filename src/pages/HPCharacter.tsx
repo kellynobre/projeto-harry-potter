@@ -27,10 +27,8 @@ export default function HPCharacter() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Extrai espécies únicas para o select
   const especiesUnicas = Array.from(new Set(characters.map(c => c.species).filter(Boolean)));
 
-  // Filtra personagens conforme filtros e busca
   const personagensFiltrados = characters.filter((c) =>
     (!filtroCasa || (c.house && c.house === filtroCasa)) &&
     (!filtroEspecie || (c.species && c.species === filtroEspecie)) &&
@@ -38,7 +36,6 @@ export default function HPCharacter() {
     (!searchNome || c.name.toLowerCase().includes(searchNome.toLowerCase()))
   );
 
-  // Loading
   if (loading) {
     return (
       <div className="h-screen w-full flex flex-col justify-center items-center bg-black text-white">
@@ -48,7 +45,6 @@ export default function HPCharacter() {
     );
   }
 
-  // Erro
   if (error) {
     return (
       <div className="h-screen w-full flex flex-col justify-center items-center bg-black text-red-500">
@@ -58,21 +54,20 @@ export default function HPCharacter() {
   }
 
   return (
-    <div className="min-h-screen bg-black w-full text-white">
+    <div className="min-h-screen bg-black py-[120px] w-full text-white">
       <div className="container py-6">
         <h1 className="text-4xl md:text-5xl font-harry mb-8 text-center text-yellow-400 drop-shadow-lg">
           Personagens de Harry Potter
         </h1>
 
-      {/* Filtros */}
 <div className="flex flex-col md:flex-row gap-4 mb-8 justify-center items-center flex-wrap">
 
-  {/* Filtro Casa */}
-  <div className="relative">
+ 
+  <div className="relative w-60">
     <select
       value={filtroCasa}
       onChange={(e) => setFiltroCasa(e.target.value)}
-      className="px-4 py-2 pr-10 rounded-lg bg-gray-900 text-white font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 appearance-none"
+      className="w-full px-4 py-2 pr-10 rounded-lg bg-gray-900 text-white font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 appearance-none cursor-pointer"
     >
       <option value="">Todas casas</option>
       <option value="Gryffindor">Gryffindor</option>
@@ -80,7 +75,6 @@ export default function HPCharacter() {
       <option value="Hufflepuff">Hufflepuff</option>
       <option value="Ravenclaw">Ravenclaw</option>
     </select>
-    {/* Seta customizada */}
     <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
       <svg className="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -88,31 +82,38 @@ export default function HPCharacter() {
     </div>
   </div>
 
-  {/* Filtro Espécie */}
-  <div className="relative">
-    <select
-      value={filtroEspecie}
-      onChange={(e) => setFiltroEspecie(e.target.value)}
-      className="px-4 py-2 pr-10 rounded-lg bg-gray-900 text-white font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 appearance-none"
+<div className="relative w-60">
+  <select
+    value={filtroEspecie}
+    onChange={(e) => setFiltroEspecie(e.target.value)}
+    className="w-full px-4 py-2 pr-10 rounded-lg bg-gray-900 text-white font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 appearance-none cursor-pointer capitalize"
+  >
+    <option value="">Todas espécies</option>
+    {especiesUnicas.map((esp) => (
+      <option key={esp} value={esp} className="capitalize">
+        {esp}
+      </option>
+    ))}
+  </select>
+  <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+    <svg
+      className="w-4 h-4 text-yellow-400"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
     >
-      <option value="">Todas espécies</option>
-      {especiesUnicas.map((esp) => (
-        <option key={esp} value={esp}>{esp}</option>
-      ))}
-    </select>
-    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-      <svg className="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-      </svg>
-    </div>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
   </div>
+</div>
 
-  {/* Filtro Vivo/Morto */}
-  <div className="relative">
+
+  <div className="relative w-60">
     <select
       value={filtroVivo}
       onChange={(e) => setFiltroVivo(e.target.value)}
-      className="px-4 py-2 pr-10 rounded-lg bg-gray-900 text-white font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 appearance-none"
+      className="w-full px-4 py-2 pr-10 rounded-lg bg-gray-900 text-white font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 appearance-none cursor-pointer"
     >
       <option value="">Todos</option>
       <option value="alive">Vivos</option>
@@ -125,18 +126,17 @@ export default function HPCharacter() {
     </div>
   </div>
 
-  {/* Pesquisa por nome */}
   <input
     type="text"
     placeholder="Procurar por nome..."
     value={searchNome}
     onChange={(e) => setSearchNome(e.target.value)}
-    className="px-4 py-2 rounded-lg bg-gray-900 text-white font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-yellow-300"
+    className="w-60 px-4 py-2 rounded-lg bg-gray-900 text-white font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-yellow-300"
   />
 </div>
 
 
-        {/* Grid de personagens */}
+
         {personagensFiltrados.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {personagensFiltrados.map((p) => (
@@ -144,7 +144,7 @@ export default function HPCharacter() {
                 key={p.id}
                 personagem={{
                   ...p,
-                  image: p.image ? p.image : "/img/placeholder.png", //placeholder quando não tem imagem
+                  image: p.image ? p.image : "/img/placeholder.png", 
                 }}
                 onSelect={(id) => navigate(`/characters/${id}`)}
                 className="hover:scale-105 transition-transform duration-200 shadow-lg"

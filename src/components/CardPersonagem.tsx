@@ -12,7 +12,6 @@ export const CardPersonagem: React.FC<Props> = ({ personagem, onSelect }) => {
   const { favoritos, toggleFavorito } = useFavoritos();
   const isFavorito = favoritos.some(f => f.id === personagem.id);
 
-  // Define cores da casa
   const casaColor = personagem.house
     ? personagem.house === "Gryffindor" ? "text-red-500" :
       personagem.house === "Slytherin" ? "text-green-500" :
@@ -23,7 +22,7 @@ export const CardPersonagem: React.FC<Props> = ({ personagem, onSelect }) => {
 
   return (
     <div
-      className="bg-black bg-opacity-70 backdrop-blur-md p-4 rounded-xl cursor-pointer transform transition hover:scale-105 shadow-[0_0_20px_rgba(255,215,0,0.5)]"
+      className="flex flex-col justify-start bg-black bg-opacity-70 backdrop-blur-md p-4 rounded-xl cursor-pointer transform transition hover:scale-105 shadow-[0_0_20px_rgba(255,215,0,0.5)] min-h-[350px]"
       onClick={() => onSelect(personagem.id)}
     >
       <img
@@ -41,22 +40,25 @@ export const CardPersonagem: React.FC<Props> = ({ personagem, onSelect }) => {
       )}
 
       {personagem.species && (
-        <p className="text-center text-sm mb-2 text-gray-200">
+        <p className="text-center text-sm mb-2 text-gray-200 capitalize">
           Espécie: {personagem.species}
         </p>
       )}
-<button
-  onClick={(e) => { e.stopPropagation(); toggleFavorito(personagem); }}
-  className={`w-full py-1 rounded-lg text-[16px] transition-colors duration-200
-    focus:outline-none focus:ring-0
-    ${isFavorito
-      ? "!bg-red-600 text-white hover:!bg-red-700 hover:!border-red-700"
-      : "!bg-yellow-500 text-black hover:!bg-yellow-400 hover:!border-yellow-400"
-    }`}
->
-  {isFavorito ? "Remover" : "Favoritar"}
-</button>
 
+     
+      <div className="mt-auto">
+        <button
+          onClick={(e) => { e.stopPropagation(); toggleFavorito(personagem); }}
+          className={`w-full py-1 rounded-lg text-[16px] transition-colors duration-200
+            focus:outline-none focus:ring-0
+            ${isFavorito
+              ? "!bg-red-600 text-white hover:!bg-red-700 hover:!border-red-700"
+              : "!bg-yellow-500 text-black hover:!bg-yellow-400 hover:!border-yellow-400"
+            }`}
+        >
+          {isFavorito ? "Remover" : "Favoritar"}
+        </button>
+      </div>
     </div>
   );
 };

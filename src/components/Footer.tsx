@@ -5,7 +5,6 @@ import React from "react";
 const Footer: React.FC = () => {
   return (
     <footer className="w-full h-full bg-black text-white relative overflow-hidden">
-      {/* Partículas mágicas */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="animate-pulse-slow bg-yellow-400 w-1 h-1 rounded-full absolute top-10 left-20"></div>
         <div className="animate-pulse-slow bg-yellow-400 w-1 h-1 rounded-full absolute top-40 left-80"></div>

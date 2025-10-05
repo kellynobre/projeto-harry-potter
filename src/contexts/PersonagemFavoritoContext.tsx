@@ -6,13 +6,12 @@ export interface FavoritoContextType {
   toggleFavorito: (personagem: Character) => void;
 }
 
-// Cria o contexto com valores padrão
 export const FavoritoContext = createContext<FavoritoContextType>({
   favoritos: [],
   toggleFavorito: () => {},
 });
 
-// Provider como função normal
+
 export function FavoritoProvider(props: { children: React.ReactNode }) {
   const { children } = props;
 

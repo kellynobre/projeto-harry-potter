@@ -1,4 +1,6 @@
 export type Spell = {
-  name?: string;
+  name: string;
   description?: string;
+  incantation?: string;
+  type?: string;
 };

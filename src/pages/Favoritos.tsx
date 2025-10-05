@@ -7,7 +7,6 @@ export default function Favoritos() {
   const { favoritos, toggleFavorito } = useFavoritos();
   const [loading, setLoading] = useState(true);
 
-  // Simula loading, igual nas outras páginas
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timer);
@@ -28,7 +27,7 @@ export default function Favoritos() {
 
   if (favoritos.length === 0) {
     return (
-      <div className="w-full h-full h-screen bg-black">
+      <div className="w-full h-full h-screen bg-black py-[120px]">
       <div className="container flex flex-col justify-center items-center text-yellow-400 font-harry">
         <h2 className="text-4xl font-bold mb-4 drop-shadow-lg">Favoritos</h2>
         <p className="mb-6 text-center text-lg">Nenhum personagem foi favoritado ainda.</p>
@@ -44,7 +43,7 @@ export default function Favoritos() {
   }
 
   return (
-    <div className="w-full h-full bg-black py-[120px]">
+    <div className="w-full h-full  bg-black py-[120px]">
       <div className="container">
         <h2 className="text-4xl text-yellow-400 text-center mb-8 drop-shadow-lg font-harry">Meus Favoritos</h2>
 

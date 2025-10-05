@@ -34,13 +34,12 @@ export default function HPSpells() {
   }
 
   return (
-    <div className="w-full h-full bg-black py-[120px]">
+    <div className="w-full h-full min-h-screen bg-black py-[120px]">
     <div className="container">
       <h1 className="text-4xl font-harry mb-6 text-center text-yellow-400 drop-shadow-lg">
         Feitiços do Mundo Mágico
       </h1>
 
-      {/* Busca */}
       <div className="flex justify-center mb-6">
         <input
           type="text"
@@ -51,7 +50,6 @@ export default function HPSpells() {
         />
       </div>
 
-      {/* Grid de feitiços */}
       {spellsFiltrados.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {spellsFiltrados.map((spell, index) => (
@@ -81,7 +79,6 @@ export default function HPSpells() {
         <p className="text-center text-gray-400 mt-10">Nenhum feitiço encontrado.</p>
       )}
 
-      {/* Modal */}
       {modalSpell && (
         <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50 p-4">
           <div className="bg-gray-900 rounded-2xl max-w-md w-full p-6 relative shadow-[0_0_50px_rgba(255,215,0,0.7)]">
