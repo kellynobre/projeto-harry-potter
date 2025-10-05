@@ -36,7 +36,7 @@ export default function HPSpells() {
   return (
     <div className="w-full h-full min-h-screen bg-black py-[120px]">
     <div className="container">
-      <h1 className="text-4xl font-harry mb-6 text-center text-yellow-400 drop-shadow-lg">
+      <h1 className="text-4xl  mb-6 text-center text-yellow-400 drop-shadow-lg">
         Feitiços do Mundo Mágico
       </h1>
 
@@ -58,20 +58,7 @@ export default function HPSpells() {
               className="bg-black bg-opacity-70 backdrop-blur-md p-4 rounded-2xl shadow-[0_0_20px_rgba(255,215,0,0.5)] hover:shadow-[0_0_40px_rgba(255,215,0,0.7)] hover:scale-105 transform transition cursor-pointer border-2 border-yellow-400"
               onClick={() => setModalSpell(spell)}
             >
-              <h3 className="text-xl font-bold mb-2 text-yellow-400 font-harry">{spell.name}</h3>
-              {spell.incantation && (
-                <p className="text-sm mb-1 text-gray-200">
-                  <span className="font-semibold text-yellow-400">Incantation:</span> {spell.incantation}
-                </p>
-              )}
-              {spell.type && (
-                <p className="text-sm mb-1 text-gray-200">
-                  <span className="font-semibold text-yellow-400">Tipo:</span> {spell.type}
-                </p>
-              )}
-              {spell.description && (
-                <p className="text-gray-300 text-sm truncate">{spell.description}</p>
-              )}
+              <h3 className="text-xl  mb-2 text-yellow-400 ">{spell.name}</h3>
             </div>
           ))}
         </div>
@@ -88,17 +75,7 @@ export default function HPSpells() {
             >
               &times;
             </button>
-            <h2 className="text-2xl font-bold mb-4 text-yellow-400 font-harry">{modalSpell.name}</h2>
-            {modalSpell.incantation && (
-              <p className="mb-2 text-gray-200">
-                <span className="font-semibold text-yellow-400">Incantation:</span> {modalSpell.incantation}
-              </p>
-            )}
-            {modalSpell.type && (
-              <p className="mb-2 text-gray-200">
-                <span className="font-semibold text-yellow-400">Tipo:</span> {modalSpell.type}
-              </p>
-            )}
+            <h2 className="text-2xl  mb-4 text-yellow-400 ">{modalSpell.name}</h2>
             {modalSpell.description && (
               <p className="text-gray-200">{modalSpell.description}</p>
             )}

@@ -15,7 +15,7 @@ export const getCharacters = async (page = 1, limit = 12): Promise<Character[]> 
   const data: PaginatedResponse = await res.json();
 
   return data.results.map((char, index) => ({
-    id: `${char.name.toLowerCase().replace(/\s+/g, "_")}_${index + (page - 1) * limit}`, // id único por página
+    id: `${char.name.toLowerCase().replace(/\s+/g, "_")}_${index + (page - 1) * limit}`, 
     name: char.name,
     species: char.species,
     house: char.house,

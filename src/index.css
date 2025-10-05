@@ -10,21 +10,21 @@
   font-display: swap;
 }
 
-/* Container centralizado */
+
 .container {
   max-width: calc(1216px + 2rem);
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* Garante que html e body ocupem toda a altura da tela */
+
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-/* Estilo global */
+
 :root {
   font-family: "Sofia Sans","Harry" !important;
   /*font-family: system-ui, Avenir, Helvetica, Arial, sans-serif*/
@@ -58,13 +58,13 @@ body {
 
 }
 
-/* Títulos */
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
-/* Botões */
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -84,7 +84,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Tema claro */
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

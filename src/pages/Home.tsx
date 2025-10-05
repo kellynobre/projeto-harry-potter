@@ -21,7 +21,7 @@ const Home: React.FC = () => {
         const random = data[Math.floor(Math.random() * data.length)];
         setCharacter(random);
       } catch (err) {
-        setError("Não foi possível carregar os personagens. Tente novamente mais tarde 🪄");
+        setError("Não foi possível carregar os personagens. Tente novamente mais tarde");
       } finally {
         setLoading(false);
       }
@@ -38,7 +38,7 @@ const Home: React.FC = () => {
           alt="Carregando..."
           className="w-24 h-24 mb-4 animate-spin"
         />
-        <p className="text-lg">Carregando personagem...</p>
+        <p className="text-lg">Carregando página...</p>
       </div>
     );
   }

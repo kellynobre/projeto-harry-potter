@@ -20,7 +20,6 @@ const Header: React.FC = () => {
           <Link className="border-b-2 border-transparent hover:border-yellow-400 transition-all duration-300" to="/favoritos">Favoritos</Link>
         </nav>
 
-        {/* Mobile Hamburger */}
     
 <button
   className="md:hidden flex flex-col justify-center items-center w-10 h-10 !bg-yellow-400 rounded-lg border border-yellow-500 p-2"

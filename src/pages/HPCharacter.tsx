@@ -75,9 +75,9 @@ export default function HPCharacter() {
           Personagens de Harry Potter
         </h1>
 
-        {/* FILTROS */}
+    
         <div className="flex flex-col md:flex-row gap-4 mb-8 justify-center items-center flex-wrap">
-          {/* Casa */}
+         
           <div className="relative w-60">
             <select
               value={filtroCasa}
@@ -103,7 +103,7 @@ export default function HPCharacter() {
             </div>
           </div>
 
-          {/* Espécie */}
+         
           <div className="relative w-60">
             <select
               value={filtroEspecie}
@@ -130,7 +130,7 @@ export default function HPCharacter() {
             </div>
           </div>
 
-          {/* Vivo/Morto */}
+       
           <div className="relative w-60">
             <select
               value={filtroVivo}
@@ -154,7 +154,6 @@ export default function HPCharacter() {
             </div>
           </div>
 
-          {/* Busca por nome */}
           <input
             type="text"
             placeholder="Procurar por nome..."
@@ -164,7 +163,7 @@ export default function HPCharacter() {
           />
         </div>
 
-        {/* GRID DE PERSONAGENS */}
+       
         {personagensFiltrados.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {personagensFiltrados.map((p) => (
@@ -185,7 +184,7 @@ export default function HPCharacter() {
           </p>
         )}
 
-        {/* PAGINAÇÃO */}
+       
         
 <div className="flex justify-center items-center mt-[4rem] gap-4">
   <button

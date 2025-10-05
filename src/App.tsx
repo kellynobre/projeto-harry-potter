@@ -15,10 +15,10 @@ function App() {
   return (
     <FavoritoProvider>
       <div className="flex flex-col min-h-screen">
-        {/* Header */}
+        
         <Header />
 
-        {/* Conteúdo principal */}
+       
         <main className="flex">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -37,7 +37,7 @@ function App() {
           </Routes>
         </main>
 
-        {/* Footer */}
+    
         <Footer />
       </div>
     </FavoritoProvider>
