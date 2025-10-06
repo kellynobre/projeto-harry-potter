@@ -1,4 +1,3 @@
-// src/types/character.ts
 export interface Character {
   id: string;
   name: string;

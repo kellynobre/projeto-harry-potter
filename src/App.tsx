@@ -1,5 +1,3 @@
-// src/App.tsx
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HPCharacter from "./pages/HPCharacter";
 import HPCharacterDetail from "./pages/HPCharacterDetail";

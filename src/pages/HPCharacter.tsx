@@ -1,4 +1,3 @@
-// src/pages/HPCharacter.tsx
 import { useEffect, useState } from "react";
 import { getCharacters } from "../services/character";
 import type { Character } from "../types/character";

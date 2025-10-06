@@ -1,5 +1,4 @@
-// src/pages/HPSpells.tsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getSpells } from "../services/spells";
 import type { Spell } from "../types/spell";
 
